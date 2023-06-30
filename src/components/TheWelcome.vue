@@ -2,7 +2,7 @@
   <div>
     <div class="ccc">
       <label for="startDate">วันที่เริ่มต้น:</label>
-      <input type="date" id="startDate" v-model="startDate" @change="filterData" />
+      <input type="date" id="startDate" v-model="startDate" @change="filterData" /> <br>
       <label for="endDate">วันที่สิ้นสุด:</label>
       <input type="date" id="endDate" v-model="endDate" @change="filterData" />
     </div>
@@ -15,8 +15,7 @@
           <th>ประชากร</th>
           <th>ฟื้นตัวแล้ว</th>
           <th>ผู้เสียชีวิต</th>
-          <th>ผู้ติดเชื้อวันนี้</th>
-          <th>ผู้ตายวันนี้</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -26,8 +25,7 @@
           <td style="text-align: center;">{{ country.population }}</td>
           <td style="text-align: center;">{{ country.recovered }}</td>
           <td style="text-align: center;">{{ country.deaths }}</td>
-          <td style="text-align: center;">{{ country.todayCases }}</td>
-          <td style="text-align: center;">{{ country.todayDeaths }}</td>
+          
         </tr>
       </tbody>
     </table>
@@ -46,6 +44,7 @@ onMounted(async () => {
   try {
     const response = await axios.get('https://disease.sh/v3/covid-19/countries');
     countriesData.value = response.data;
+    console.log(response);
   } catch (error) {
     console.log(error);
   }
